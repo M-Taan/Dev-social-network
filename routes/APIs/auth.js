@@ -13,8 +13,8 @@ const auth = require("../../middleware/auth");
 
 /*After we add the middleware to the route, we need to add to the header x-auth-token the relative token */
 // @route GET APIs/auth
-// @desc Test route
-// @access Public
+// @desc Displaying the user
+// @access Private
 router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
@@ -54,7 +54,7 @@ router.post(
 
       const isPass = await bcrypt.compare(req.body.password, user.password);
 
-      if (!isMatch) {
+      if (!isPass) {
         return res
           .status(400)
           .json({ errors: [{ msg: "Invalid Email or Password" }] });
