@@ -70,9 +70,9 @@ router.post(
 
     profile.user = req.user.id;
     if (company) profile.company = company;
-    if (website) profile.company = website;
-    if (location) profile.company = location;
-    if (bio) profile.company = bio;
+    if (website) profile.website = website;
+    if (location) profile.location = location;
+    if (bio) profile.bio = bio;
     if (status) profile.status = status;
     if (githubusername) profile.githubusername = githubusername;
     if (skills) {
