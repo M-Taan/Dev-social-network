@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://mohamadtaan:8Rsbn5R64GL3LdU@devleb.go7ea.mongodb.net/DevLeb?retryWrites=true&w=majority",
+  "jwtSecret": "topsecretencryption"
+}
