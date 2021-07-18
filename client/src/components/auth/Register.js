@@ -1,6 +1,11 @@
 import { React, useState } from "react";
+import { connect } from "react-redux";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ setAlert, register, isAuth }) => {
   // State for the different fields in the register form
   const [registerData, setRegisterData] = useState({
     name: "",
@@ -24,11 +29,15 @@ const Register = () => {
     event.preventDefault();
 
     if (password === conPassword) {
-      console.log(registerData);
+      register({ name, email, password });
     } else {
-      alert("Password doesn't match");
+      setAlert("Password doesn't match", "danger");
     }
   };
+
+  if (isAuth) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <section className="container">
@@ -92,4 +101,13 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuth: PropTypes.bool,
+};
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

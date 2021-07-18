@@ -1,7 +1,12 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-labels */
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actions/auth";
 
-const Login = () => {
+const Login = ({ login, isAuth }) => {
   // State for the login form
   const [loginData, setLoginData] = useState({
     email: "",
@@ -20,18 +25,22 @@ const Login = () => {
   // Handle the login form submit
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log("Handle Login is working");
+    login(email, password);
   };
 
+  if (isAuth) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
-    <section class="container">
-      <div class="alert alert-danger">Invalid credentials</div>
-      <h1 class="large text-primary">Sign In</h1>
-      <p class="lead">
-        <i class="fas fa-user"></i> Sign into Your Account
+    <section className="container">
+      {/* <div className="alert alert-danger">Invalid credentials</div> */}
+      <h1 className="large text-primary">Sign In</h1>
+      <p className="lead">
+        <i className="fas fa-user"></i> Sign into Your Account
       </p>
-      <form class="form" onSubmit={(event) => handleLogin(event)}>
-        <div class="form-group">
+      <form className="form" onSubmit={(event) => handleLogin(event)}>
+        <div className="form-group">
           <input
             type="email"
             placeholder="Email Address"
@@ -41,7 +50,7 @@ const Login = () => {
             required
           />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <input
             type="password"
             placeholder="Password"
@@ -51,13 +60,22 @@ const Login = () => {
             required
           />
         </div>
-        <input type="submit" class="btn btn-primary" value="Login" />
+        <input type="submit" className="btn btn-primary" value="Login" />
       </form>
-      <p class="my-1">
+      <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
     </section>
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuth: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+
+export default connect(mapStateToProps, { login })(Login);
