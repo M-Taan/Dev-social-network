@@ -12,7 +12,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   isAuth: null,
   loading: true,
-  user: null,
+  user: [],
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
