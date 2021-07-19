@@ -33,7 +33,6 @@ export default function (state = initialState, action) {
         loading: false,
         profile: null,
         repos: [],
-        loading: false,
       };
 
     default:
