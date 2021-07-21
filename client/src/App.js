@@ -16,6 +16,8 @@ import Alert from "./components/UI/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrvtRoute from "./components/PrvtRoute";
 import Loading from "./components/UI/Loading";
+import CreateProfile from "./components/dashboard/CreateProfile";
+import EditProfile from "./components/dashboard/EditProfile";
 
 const App = () => {
   useEffect(() => {
@@ -47,7 +49,7 @@ const App = () => {
     return (
       <Route exact path="/register">
         <Navbar className={"navbar bg-dark "} />
-        <Register mainClass={"container"} />
+        <Register />
       </Route>
     );
   };
@@ -63,6 +65,27 @@ const App = () => {
     );
   };
 
+  const displayCreateProfile = () => {
+    return (
+      <PrvtRoute
+        exact
+        path="/create-profile"
+        component={CreateProfile}
+        navbar={Navbar}
+      />
+    );
+  };
+
+  const displayEditProfile = () => {
+    return (
+      <PrvtRoute
+        exact
+        path="/edit-profile"
+        component={EditProfile}
+        navbar={Navbar}
+      />
+    );
+  };
   return (
     <Provider store={store}>
       <PersistGate loading={Loading} persistor={persistor}>
@@ -74,6 +97,8 @@ const App = () => {
               {displayLogin()}
               {displayRegister()}
               {displayDashboard()}
+              {displayCreateProfile()}
+              {displayEditProfile()}
             </Switch>
           </>
         </Router>

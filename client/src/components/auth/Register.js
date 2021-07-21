@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const Register = ({ setAlert, register, isAuth }) => {
   // State for the different fields in the register form
@@ -95,7 +95,7 @@ const Register = ({ setAlert, register, isAuth }) => {
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">
-        Already have an account? <a href="/login">Sign In</a>
+        Already have an account? <Link to="/login">Sign In</Link>
       </p>
     </section>
   );
