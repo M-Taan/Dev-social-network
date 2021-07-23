@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { editProfile, getCurrentUser } from "../../actions/profile";
 import { Link, Redirect } from "react-router-dom";
+import Alert from "../UI/Alert";
 
 const EditProfile = ({
   editProfile,
@@ -76,6 +77,7 @@ const EditProfile = ({
 
   return (
     <section className="container">
+      <Alert />
       <h1 className="large text-primary">Edit Your Profile</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Let's get some information to make your

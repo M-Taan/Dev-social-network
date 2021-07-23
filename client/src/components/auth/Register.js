@@ -4,6 +4,7 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { Link, Redirect } from "react-router-dom";
+import Alert from "../UI/Alert";
 
 const Register = ({ setAlert, register, isAuth }) => {
   // State for the different fields in the register form
@@ -41,6 +42,7 @@ const Register = ({ setAlert, register, isAuth }) => {
 
   return (
     <section className="container">
+      <Alert />
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Create Your Account

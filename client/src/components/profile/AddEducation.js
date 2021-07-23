@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { addEducation } from "../../actions/profile";
 import { connect } from "react-redux";
+import Alert from "../UI/Alert";
 
 const AddEducation = ({ addEducation, history }) => {
   const [eduForm, setEduForm] = useState({
@@ -34,6 +35,7 @@ const AddEducation = ({ addEducation, history }) => {
   };
   return (
     <section className="container">
+      <Alert />
       <h1 className="large text-primary">Add Your Education</h1>
       <p className="lead">
         <i className="fas fa-graduation-cap"></i> Add any school, bootcamp, etc

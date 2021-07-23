@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addExperience } from "../../actions/profile";
+import Alert from "../UI/Alert";
 
 const AddExperience = ({ addExperience, history }) => {
   const [expForm, setExpForm] = useState({
@@ -32,6 +33,7 @@ const AddExperience = ({ addExperience, history }) => {
   };
   return (
     <section className="container">
+      <Alert />
       <h1 className="large text-primary">Add An Experience</h1>
       <p className="lead">
         <i className="fas fa-code-branch"></i> Add any developer/programming

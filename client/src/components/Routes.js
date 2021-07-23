@@ -16,7 +16,6 @@ import { Route, Switch } from "react-router-dom";
 const Routes = () => {
   return (
     <Fragment>
-      <Alert />
       <Switch>
         <Route exact path="/">
           <Navbar className={"navbar"} />

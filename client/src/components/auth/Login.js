@@ -5,6 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
+import Alert from "../UI/Alert";
 
 const Login = ({ login, isAuth }) => {
   // State for the login form
@@ -34,7 +35,7 @@ const Login = ({ login, isAuth }) => {
 
   return (
     <section className="container">
-      {/* <div className="alert alert-danger">Invalid credentials</div> */}
+      <Alert />
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Sign into Your Account

@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createProfile } from "../../actions/profile";
+import Alert from "../UI/Alert";
 
 const CreateProfile = ({ createProfile, history }) => {
   const [createForm, setCreateForm] = useState({
@@ -47,6 +48,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
   return (
     <section className="container">
+      <Alert />
       <h1 className="large text-primary">Create Your Profile</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Let's get some information to make your
