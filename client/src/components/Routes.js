@@ -3,9 +3,9 @@ import Navbar from "./UI/Navbar";
 import Landing from "./UI/Landing";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import Alert from "./UI/Alert";
 import Dashboard from "./dashboard/Dashboard";
 import PrvtRoute from "./PrvtRoute";
+import Profiles from "./profiles/Profiles";
 
 import CreateProfile from "./profile/CreateProfile";
 import EditProfile from "./profile/EditProfile";
@@ -28,6 +28,10 @@ const Routes = () => {
         <Route exact path="/register">
           <Navbar className={"navbar bg-dark "} />
           <Register />
+        </Route>
+        <Route exact path="/profiles">
+          <Navbar className={"navbar bg-dark "} />
+          <Profiles />
         </Route>
         <PrvtRoute
           exact

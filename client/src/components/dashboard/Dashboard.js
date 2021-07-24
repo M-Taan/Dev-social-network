@@ -58,7 +58,7 @@ const Dashboard = ({
   };
 
   // RETURN STATEMENT
-  return loading && profile === null && auth.loading ? (
+  return loading || profile === null || auth.loading ? (
     <Loading />
   ) : (
     <section className="container">
@@ -84,6 +84,7 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentUser, deleteAccount })(
-  Dashboard
-);
+export default connect(mapStateToProps, {
+  getCurrentUser,
+  deleteAccount,
+})(Dashboard);
