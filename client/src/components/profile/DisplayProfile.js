@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Loading from "../UI/Loading";
 import { Link } from "react-router-dom";
 import ProfileTop from "./ProfileTop";
+import ProfileAbout from "./ProfileAbout";
 
 const DisplayProfile = ({
   getProfileById,
@@ -34,6 +35,7 @@ const DisplayProfile = ({
               )}
             <div className="profile-grid my-1">
               <ProfileTop profile={profile} />
+              <ProfileAbout profile={profile} />
             </div>
           </div>
         </Fragment>
