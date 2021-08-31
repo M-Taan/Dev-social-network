@@ -6,6 +6,8 @@ import Loading from "../UI/Loading";
 import { Link } from "react-router-dom";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
+import Experience from "./Experience";
+import Education from "./Education";
 
 const DisplayProfile = ({
   getProfileById,
@@ -36,6 +38,30 @@ const DisplayProfile = ({
             <div className="profile-grid my-1">
               <ProfileTop profile={profile} />
               <ProfileAbout profile={profile} />
+              <div className="profile-exp bg-white p-2">
+                <h2 className="text-primary">Experience</h2>
+                {profile.experience.length !== 0 ? (
+                  profile.experience.map((exp, index) => (
+                    <div key={index}>
+                      <Experience experience={exp} />
+                    </div>
+                  ))
+                ) : (
+                  <div>No Experience to Show</div>
+                )}
+              </div>
+              <div className="profile-edu bg-white p-2">
+                <h2 className="text-primary">Education</h2>
+                {profile.education.length !== 0 ? (
+                  profile.education.map((edu, index) => (
+                    <div key={index}>
+                      <Education edu={edu} />
+                    </div>
+                  ))
+                ) : (
+                  <div>No Education Enlisted</div>
+                )}
+              </div>
             </div>
           </div>
         </Fragment>
