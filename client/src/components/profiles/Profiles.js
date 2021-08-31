@@ -8,8 +8,7 @@ import ProfileItem from "./ProfileItem";
 const Profiles = ({ getAllProfiles, profile }) => {
   useEffect(() => {
     getAllProfiles();
-    console.log(profile.profiles);
-  }, []);
+  }, [getAllProfiles]);
   return (
     <section className="container">
       {profile.loading || profile.profiles === [] ? (

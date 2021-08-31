@@ -223,14 +223,15 @@ export const getAllProfiles = () => async (dispatch) => {
     });
   }
 };
-
-export const getProfileById = (id) => async (dispatch) => {
+export const getProfileById = (userId) => async (dispatch) => {
   try {
-    const res = await axios.get(`APIs/profile/uses/${id}`);
+    const res = await axios.get(
+      `http://localhost:5000/APIs/profile/user/${userId}`
+    );
 
     dispatch({
       type: GET_PROFILE,
-      dispatch: res.data,
+      payload: res.data,
     });
   } catch (err) {
     dispatch({

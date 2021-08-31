@@ -1,5 +1,6 @@
 const express = require("express");
 const connectDB = require("./config/connection");
+var cors = require("cors");
 
 const app = express();
 app.use(express.json({ extended: false }));
@@ -10,6 +11,7 @@ connectDB();
 app.get("/", (req, res) => res.send());
 
 /* Routes */
+app.use(cors({ origin: "http://localhost:3000" }));
 app.use("/APIs/users", require("./routes/APIs/users"));
 app.use("/APIs/profile", require("./routes/APIs/profile"));
 app.use("/APIs/posts", require("./routes/APIs/posts"));

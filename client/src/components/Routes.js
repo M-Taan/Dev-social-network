@@ -6,6 +6,7 @@ import Register from "./auth/Register";
 import Dashboard from "./dashboard/Dashboard";
 import PrvtRoute from "./PrvtRoute";
 import Profiles from "./profiles/Profiles";
+import DisplayProfile from "./profile/DisplayProfile";
 
 import CreateProfile from "./profile/CreateProfile";
 import EditProfile from "./profile/EditProfile";
@@ -33,6 +34,12 @@ const Routes = () => {
           <Navbar className={"navbar bg-dark "} />
           <Profiles />
         </Route>
+        <PrvtRoute
+          exact
+          path="/profile/:id"
+          navbar={Navbar}
+          component={DisplayProfile}
+        />
         <PrvtRoute
           exact
           path="/dashboard"
