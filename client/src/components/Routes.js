@@ -7,6 +7,7 @@ import Dashboard from "./dashboard/Dashboard";
 import PrvtRoute from "./PrvtRoute";
 import Profiles from "./profiles/Profiles";
 import DisplayProfile from "./profile/DisplayProfile";
+import Posts from "./posts/Posts";
 
 import CreateProfile from "./profile/CreateProfile";
 import EditProfile from "./profile/EditProfile";
@@ -64,6 +65,7 @@ const Routes = () => {
           component={AddExperience}
           navbar={Navbar}
         />
+        <PrvtRoute exact path="/posts" component={Posts} navbar={Navbar} />
         <PrvtRoute
           exact
           path="/add-education"
