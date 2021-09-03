@@ -2,13 +2,14 @@ import React from "react";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addLike, removeLike } from "../../actions/post";
+import { addLike, removeLike, deletePost } from "../../actions/post";
 
 const PostPlace = ({
   post: { text, postedBy, likes, comments, date, _id },
   auth,
   addLike,
   removeLike,
+  deletePost,
 }) => {
   return (
     <div className="post bg-white p-1 my-1">
@@ -43,7 +44,11 @@ const PostPlace = ({
           Discussion <span className="comment-count">{comments.length}</span>
         </Link>
         {!auth.loading && postedBy._id === auth.user._id && (
-          <button type="button" className="btn btn-danger">
+          <button
+            onClick={(e) => deletePost(_id)}
+            type="button"
+            className="btn btn-danger"
+          >
             <i className="fas fa-times"></i>
           </button>
         )}
@@ -54,4 +59,6 @@ const PostPlace = ({
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, { addLike, removeLike })(PostPlace);
+export default connect(mapStateToProps, { addLike, removeLike, deletePost })(
+  PostPlace
+);
