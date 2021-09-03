@@ -1,6 +1,6 @@
 {
-  "mongoURI": "mongodb+srv://mohamadtaan:8Rsbn5R64GL3LdU@devleb.go7ea.mongodb.net/DevLeb?retryWrites=true&w=majority",
-  "jwtSecret": "topsecretencryption",
+  "mongoURI": "",
+  "jwtSecret": "",
   "githubClientID": "a2697522c1e60d72c1f3",
   "githubClientSecret": "3af0ddcc14855f4518754b3c48663dc9325cb4fc "
 }
