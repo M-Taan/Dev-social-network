@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import Loading from "../UI/Loading";
 import { Fragment } from "react";
 import PostPlace from "./PostPlace";
+import Alert from "../UI/Alert";
+import PostSection from "./PostSection";
 
 const Posts = ({ getPosts, post: { loading, posts } }) => {
   useEffect(() => {
@@ -14,13 +16,14 @@ const Posts = ({ getPosts, post: { loading, posts } }) => {
     <Loading />
   ) : (
     <Fragment>
-      <section class="container">
-        <h1 class="large text-primary">Posts</h1>
-        <p class="lead">
-          <i class="fas fa-user"></i> Welcome to the community!
+      <section className="container">
+        <Alert />
+        <h1 className="large text-primary">Posts</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Welcome to the community!
         </p>
-        {/* Post Form */}
-        <div class="posts">
+        <PostSection />
+        <div className="posts">
           {posts.map((post) => (
             <PostPlace key={post._id} post={post} />
           ))}
@@ -31,7 +34,7 @@ const Posts = ({ getPosts, post: { loading, posts } }) => {
 };
 
 Posts.propTypes = {
-  posts: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   getPosts: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
