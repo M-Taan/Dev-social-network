@@ -58,7 +58,7 @@ const Dashboard = ({
   };
 
   // RETURN STATEMENT
-  return loading || profile === null || auth.loading ? (
+  return loading || auth.loading ? (
     <Loading />
   ) : (
     <section className="container">

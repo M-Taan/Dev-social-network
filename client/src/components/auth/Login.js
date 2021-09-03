@@ -64,7 +64,15 @@ const Login = ({ login, isAuth }) => {
         <input type="submit" className="btn btn-primary" value="Login" />
       </form>
       <p className="my-1">
-        Don't have an account? <Link to="/register">Sign Up</Link>
+        Don't have an account?{" "}
+        <Link
+          style={{
+            textDecoration: "underline",
+          }}
+          to="/register"
+        >
+          Sign Up
+        </Link>
       </p>
     </section>
   );

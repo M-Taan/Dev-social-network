@@ -7,6 +7,8 @@ import {
   DELETE_POST,
   ADD_POST,
   GET_POST,
+  UPDATE_COMMENTS,
+  DELETE_COMMENT,
 } from "../actions/types";
 
 //Get posts
@@ -46,7 +48,7 @@ export const addLike = (post_id) => async (dispatch) => {
   }
 };
 
-// Like post
+// unLike
 export const removeLike = (post_id) => async (dispatch) => {
   try {
     const res = await axios.put(`/APIs/posts/unlike/${post_id}`);
@@ -115,6 +117,46 @@ export const getPost = (post_id) => async (dispatch) => {
     dispatch({
       type: GET_POST,
       payload: res.data,
+    });
+    console.log("Done");
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add comment
+export const addComment = (data, post_id) => async (dispatch) => {
+  const config = { headers: { "Content-Type": "application/json" } };
+  try {
+    const res = await axios.post(
+      `/APIs/posts/comment/${post_id}`,
+      data,
+      config
+    );
+    console.log(res.data);
+    dispatch({
+      type: UPDATE_COMMENTS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Delete Comment
+
+export const deleteComment = (post_id, comment_id) => async (dispatch) => {
+  try {
+    const res = axios.delete(`/APIs/posts/${post_id}/comment/${comment_id}`);
+    dispatch({
+      type: DELETE_COMMENT,
+      payload: comment_id,
     });
   } catch (err) {
     dispatch({
