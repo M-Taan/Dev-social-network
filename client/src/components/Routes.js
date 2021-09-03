@@ -14,6 +14,7 @@ import EditProfile from "./profile/EditProfile";
 import AddExperience from "./profile/AddExperience";
 import AddEducation from "./profile/AddEducation";
 import { Route, Switch } from "react-router-dom";
+import Post from "./post/Post";
 
 const Routes = () => {
   return (
@@ -65,6 +66,7 @@ const Routes = () => {
           component={AddExperience}
           navbar={Navbar}
         />
+        <PrvtRoute exact path="/post/:id" navbar={Navbar} component={Post} />
         <PrvtRoute exact path="/posts" component={Posts} navbar={Navbar} />
         <PrvtRoute
           exact

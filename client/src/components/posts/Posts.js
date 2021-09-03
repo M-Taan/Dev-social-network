@@ -12,7 +12,7 @@ const Posts = ({ getPosts, post: { loading, posts } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-  return loading ? (
+  return loading && posts !== undefined ? (
     <Loading />
   ) : (
     <Fragment>

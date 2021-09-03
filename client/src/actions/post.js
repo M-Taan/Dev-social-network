@@ -6,6 +6,7 @@ import {
   UPDATE_LIKES,
   DELETE_POST,
   ADD_POST,
+  GET_POST,
 } from "../actions/types";
 
 //Get posts
@@ -68,8 +69,7 @@ export const removeLike = (post_id) => async (dispatch) => {
 // Delete Post
 export const deletePost = (post_id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/APIs/posts/${post_id}`);
-
+    await axios.delete(`/APIs/posts/${post_id}`);
     dispatch({
       type: DELETE_POST,
       payload: post_id,
@@ -84,6 +84,7 @@ export const deletePost = (post_id) => async (dispatch) => {
   }
 };
 
+// Add post
 export const addPost = (data) => async (dispatch) => {
   const config = { headers: { "Content-Type": "application/json" } };
   try {
@@ -99,6 +100,22 @@ export const addPost = (data) => async (dispatch) => {
     });
 
     dispatch(setAlert("Post Added", "success "));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// get post by id
+export const getPost = (post_id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`http://localhost:5000/APIs/posts/${post_id}`);
+    dispatch({
+      type: GET_POST,
+      payload: res.data,
+    });
   } catch (err) {
     dispatch({
       type: POST_ERROR,
