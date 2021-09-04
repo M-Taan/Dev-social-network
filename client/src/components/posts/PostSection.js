@@ -21,6 +21,7 @@ const PostSection = ({ addPost }) => {
       </div>
       <form className="form my-1" onSubmit={(e) => handleSubmit(e)}>
         <textarea
+          value={text}
           onChange={(e) => changeHandeler(e)}
           name="text"
           cols="30"
